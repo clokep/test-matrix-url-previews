@@ -1,0 +1,33 @@
+<div style="border: solid 1px; margin: 3em; padding: 1em;">
+  <table>
+    <tr>
+      <td>
+      {% if result["og:image"] %}
+      <img src="{{ result['og:image'] }}">
+      {% endif %}
+      </td>
+
+      <td>
+      {% if result["og:title"] %}
+      <h2>
+        <a href="{{ result['og:url'] }}">{{ result["og:title"] }}</a>
+        {% if result["og:site_name"] %} - {{ result["og:site_name"] }}{% endif %}
+      </h2>
+      {% endif %}
+      {% if result["og:description"] %}
+      <p>{{ result["og:description"] }}</p>
+      {% endif %}
+      </td>
+    </tr>
+
+    <tr>
+      <td colspan="2">
+        <details>
+          <code>
+            {{ result }}
+          </code>
+        </details>
+      </td>
+    </tr>
+  </table>
+</div>

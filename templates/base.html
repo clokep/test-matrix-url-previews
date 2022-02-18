@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Test URL previews</title>
+  </head>
+  <body>
+    <h1>Homeserver version: {{ version }}</h1>
+
+    {% for result in results %}
+    {% include "preview.html" %}
+    {% endfor %}
+  </body>
+</html>
