@@ -67,11 +67,11 @@ def preview_url(homeserver, access_token, url, extra):
     parsed_url = urlparse(url)
     parameters = parse_qs(parsed_url.query)
     parameters.update(extra)
-    url = urlunparse((*parsed_url[0:4], urlencode(parameters, doseq=True), parsed_url[5]))
+    uncached_url = urlunparse((*parsed_url[0:4], urlencode(parameters, doseq=True), parsed_url[5]))
 
     req = requests.get(
         f"{homeserver}/_matrix/media/r0/preview_url",
-        params={"url": url, **extra},
+        params={"url": uncached_url, **extra},
         headers={"Authorization": f"Bearer {access_token}"},
         timeout=60,
     )
@@ -81,6 +81,9 @@ def preview_url(homeserver, access_token, url, extra):
     for key, value in result.items():
         if isinstance(value, str) and value.startswith("mxc://"):
             result[key] = f"{homeserver}/_matrix/media/v3/thumbnail/{value[6:]}?height=96&width=96"
+
+    # Include the URL too.
+    result["_url"] = url
 
     return result
 
