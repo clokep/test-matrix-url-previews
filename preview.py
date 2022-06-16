@@ -42,6 +42,8 @@ TEST_URLS = [
     "https://github.com/matrix-org/synapse",
     "https://github.com/matrix-org/synapse/issues/11563",
     "https://github.com/matrix-org/synapse/pull/11669",
+    # LWN -- Twitter card meta data only.
+    "https://lwn.net/Articles/897712/",
     # "http://www.bibliotecapleyades.net/tierra_hueca/esp_tierra_hueca_2d.ht",
     # "https://www.bibliotecapleyades.net/tierra_hueca/esp_tierra_hueca_2d.htm",
     # "ftp://ftp.ics.uci.edu/README",
