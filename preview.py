@@ -15,19 +15,23 @@ env = Environment(loader=FileSystemLoader(path.join(root, "templates")))
 TEST_URLS = [
     # YouTube.
     "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-    # Twitter with image.
-    "https://twitter.com/matrixdotorg/status/1492207278560268289",
+    "https://www.youtube.com/shorts/usofnFoFNN4",
+
     # Twitter with link.
     "https://twitter.com/matrixdotorg/status/1493535149899849735",
+    # Twitter with image.
+    #"https://twitter.com/matrixdotorg/status/1492207278560268289",
     # Reply / no media.
     "https://twitter.com/matrixdotorg/status/1492211991624224770",
     # Twitter moments.
     "https://twitter.com/cnn/moments",
     "https://twitter.com/i/events/1203845439952429057",
+
     # GIFs.
     "https://tenor.com/view/pedro-monkey-puppet-meme-awkward-gif-15268759",
     "https://imgur.com/t/science_and_tech/RDcElS2",
     "https://imgur.com/t/science_and_tech/ZhioqHP",
+
     # Reddit
     "https://www.reddit.com/r/matrixdotorg/",
     # Reddit with link.
@@ -36,14 +40,18 @@ TEST_URLS = [
     "https://www.reddit.com/r/matrixdotorg/comments/rsh7gb/working_on_a_python_matrix_bot_bot_library/",
     # Reddit without anything.
     "https://www.reddit.com/r/matrixdotorg/comments/s5m47u/cant_connect_to_my_home_server_in_element/",
+
     # Flickr
     "https://www.flickr.com/photos/roland/51382873958/",
+
     # GitHub
     "https://github.com/matrix-org/synapse",
     "https://github.com/matrix-org/synapse/issues/11563",
     "https://github.com/matrix-org/synapse/pull/11669",
+
     # LWN -- Twitter card meta data only.
     "https://lwn.net/Articles/897712/",
+
     # "http://www.bibliotecapleyades.net/tierra_hueca/esp_tierra_hueca_2d.ht",
     # "https://www.bibliotecapleyades.net/tierra_hueca/esp_tierra_hueca_2d.htm",
     # "ftp://ftp.ics.uci.edu/README",
@@ -56,7 +64,7 @@ TEST_URLS = [
 ]
 
 HOMESERVER = "http://localhost:8080"
-ACCESS_TOKEN = "syt_dGVzdGVy_TTcACJuKenrxfVIKsNaJ_0kYC9a"
+ACCESS_TOKEN = "syt_YWxpY2U_DthOgLWgTeQcucNiuFEX_3AODMK"
 
 
 def get_version(homeserver):
