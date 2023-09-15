@@ -16,9 +16,7 @@ env = Environment(loader=FileSystemLoader(path.join(root, "templates")))
 # "https://vm.tiktok.com/ZMYSCamBm/",
 # "https://www.tiktok.com/@jakevsthestate/video/7126106939238485249?_t=8a5KBxzeywP&amp;_r=1",
 # "https://blog.jetbrains.com/idea/2022/05/take-part-in-the-new-ui-preview-for-your-jetbrains-ide/",
-# "https://www.workbar.com/coworking-space-arlington-ma/",
 # "https://devblogs.microsoft.com/oldnewthing/20220816-00/?p=106994",
-
 # "https://youtrack.jetbrains.com/issue/PY-54833/Pycharm-deletes-existing-poetry-environment",
 
 TEST_URLS = [
@@ -35,6 +33,10 @@ TEST_URLS = [
     # Twitter moments.
     "https://twitter.com/cnn/moments",
     "https://twitter.com/i/events/1203845439952429057",
+
+    # Mastodon.
+    "https://mastodon.social/@matrix@mastodon.matrix.org/109864220309574450",
+    "https://mastodon.social/@matrix@mastodon.matrix.org/110940229316348043",
 
     # GIFs.
     "https://tenor.com/view/pedro-monkey-puppet-meme-awkward-gif-15268759",

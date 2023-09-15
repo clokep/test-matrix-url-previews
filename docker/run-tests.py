@@ -12,7 +12,9 @@ TEST_URLS = {
     "Twitter with image": "https://twitter.com/matrixdotorg/status/1492207278560268289",
     "Twitter reply": "https://twitter.com/matrixdotorg/status/1492211991624224770",
     "Twitter moments": "https://twitter.com/i/events/1203845439952429057",
-    "Tenor gif": "https://tenor.com/view/pedro-monkey-puppet-meme-awkward-gif-15268759",
+    "Mastodon": "https://mastodon.social/@matrix@mastodon.matrix.org/109864220309574450",
+    "Mastodon reply": "https://mastodon.social/@matrix@mastodon.matrix.org/110940229316348043",
+    "Tenor gif": "https://tenor.com/view/facepalm-picard-star-trek-the-next-generation-disappointed-gif-23456183",
     "imgur gif": "https://imgur.com/t/science_and_tech/RDcElS2",
     "imgur video": "https://imgur.com/t/science_and_tech/ZhioqHP",
     "Reddit": "https://www.reddit.com/r/matrixdotorg/",
@@ -24,6 +26,12 @@ TEST_URLS = {
     "Github issue": "https://github.com/matrix-org/synapse/issues/11563",
     "GitHub PR": "https://github.com/matrix-org/synapse/pull/11669",
     "Twitter card metadata-only": "https://lwn.net/Articles/897712/",
+    "Data URI": "data:text/html,<h1>Hello, World!</h1>",
+    "Broken encoding": "https://www.bibliotecapleyades.net/tierra_hueca/esp_tierra_hueca_2d.htm",
+    "FTP": "ftp://ftp.ics.uci.edu/README",
+    "MP3 Stream": "https://radio.anarc.at/radio.mp3",
+    "BBC": "https://www.bbc.co.uk/news/technology-65301510",
+    "NY Times": "https://www.nytimes.com/2023/09/15/science/jupiter-comet-flashes.html",
 }
 
 def get_version(homeserver: str) -> str:
