@@ -1,5 +1,5 @@
+import datetime
 import json
-import os
 import sys
 
 import requests
@@ -68,12 +68,11 @@ def main(homeserver: str, access_token: str) -> None:
     version = get_version(homeserver)
 
     directory = "v" + version
-    os.makedirs(directory)
 
-    # TODO Include the date and the date of the image.
     results = {
         "version": version,
         "queries": [],
+        "date": datetime.datetime.utcnow().isoformat(),
     }
     for desc, url in TEST_URLS.items():
         result = preview_url(homeserver, access_token, directory, url)

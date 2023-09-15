@@ -1,24 +1,28 @@
 set -xe
 
-# Clean-up.
-rm -r data
-mkdir data
-
 CONTAINER=synapse-url-preview-test
 
 VERSION=${1:-latest}
 echo "Testing Synapse $VERSION"
 
+# Clean-up.
+rm -r $VERSION
+mkdir $VERSION
+mkdir $VERSION/data
+
 echo "Generating the config"
 # Note that the SYNAPSE_CONFIG_DIR and SYNAPSE_CONFIG_PATH environment variables
 # aren't needed in newer Synapses, but v1.0.0 is strict.
 docker run -it --rm \
-    --mount type=bind,src=$(pwd)/data,dst=/data \
+    --mount type=bind,src=$(pwd)/$VERSION/data,dst=/data \
     -e SYNAPSE_SERVER_NAME=localhost:8888 \
     -e SYNAPSE_REPORT_STATS=no \
     -e SYNAPSE_CONFIG_DIR=/data \
     -e SYNAPSE_CONFIG_PATH=/data/homeserver.yaml \
     matrixdotorg/synapse:$VERSION generate
+
+# Dump some info.
+docker inspect -f '{{ .Created }}' matrixdotorg/synapse:$VERSION > $VERSION/created
 
 # Enable URL previews.
 echo "Updating the config"
@@ -71,16 +75,16 @@ url_preview_ip_range_blacklist:
   - '2001:db8::/32'
   - 'ff00::/8'
   - 'fec0::/10'
-" >> data/homeserver.yaml
+" >> $VERSION/data/homeserver.yaml
 
-sed -i "" -e "s_/homeserver.log_/data/homeserver.log_" data/localhost:8888.log.config
+sed -i "" -e "s_/homeserver.log_/data/homeserver.log_" $VERSION/data/localhost:8888.log.config
 
 # Run the Docker container.
 echo "Starting Synapse"
 # Note that the environment variables aren't needed in newer Synapses, but
 # v1.0.0 is strict.
 docker run -d --name $CONTAINER \
-    --mount type=bind,src=$(pwd)/data,dst=/data \
+    --mount type=bind,src=$(pwd)/$VERSION/data,dst=/data \
     -e SYNAPSE_SERVER_NAME=localhost:8888 \
     -e SYNAPSE_REPORT_STATS=no \
     -e SYNAPSE_CONFIG_DIR=/data \
