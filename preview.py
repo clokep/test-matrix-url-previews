@@ -11,6 +11,15 @@ app = Flask(__name__)
 root = path.dirname(path.abspath(__file__))
 env = Environment(loader=FileSystemLoader(path.join(root, "templates")))
 
+# "https://www.tiktok.com/@shmemmmy/video/7203875237014981934",
+# "https://odysee.com/@Neroke5:8",
+# "https://vm.tiktok.com/ZMYSCamBm/",
+# "https://www.tiktok.com/@jakevsthestate/video/7126106939238485249?_t=8a5KBxzeywP&amp;_r=1",
+# "https://blog.jetbrains.com/idea/2022/05/take-part-in-the-new-ui-preview-for-your-jetbrains-ide/",
+# "https://www.workbar.com/coworking-space-arlington-ma/",
+# "https://devblogs.microsoft.com/oldnewthing/20220816-00/?p=106994",
+
+# "https://youtrack.jetbrains.com/issue/PY-54833/Pycharm-deletes-existing-poetry-environment",
 
 TEST_URLS = [
     # YouTube.
