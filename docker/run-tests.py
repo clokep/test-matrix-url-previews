@@ -32,6 +32,8 @@ TEST_URLS = {
     "MP3 Stream": "https://radio.anarc.at/radio.mp3",
     "BBC": "https://www.bbc.co.uk/news/technology-65301510",
     "NY Times": "https://www.nytimes.com/2023/09/15/science/jupiter-comet-flashes.html",
+    "Associated Press": "https://apnews.com/hear-how-a-pilot-calmly-led-her-alaska-airlines-flight-to-safety-during-an-emergency-0000018ce047dbeeafade4ff94770000",
+    "Hacker News": "https://news.ycombinator.com/item?id=38162275",
 }
 
 def get_version(homeserver: str) -> str:
@@ -41,15 +43,18 @@ def get_version(homeserver: str) -> str:
 
 
 def preview_url(homeserver: str, access_token: str, directory: str, url: str) -> None:
-    req = requests.get(
-        f"{homeserver}/_matrix/media/r0/preview_url",
-        params={"url": url},
-        headers={"Authorization": f"Bearer {access_token}"},
-        timeout=60,
-    )
-
-    # Replace any mxc:// URL with something reasonable.
-    result = req.json()
+    try:
+        req = requests.get(
+            f"{homeserver}/_matrix/media/r0/preview_url",
+            params={"url": url},
+            headers={"Authorization": f"Bearer {access_token}"},
+            timeout=60,
+        )
+    except requests.Timeout:
+        result = {"errcode": "TIMEOUT"}
+    else:
+        # Replace any mxc:// URL with something reasonable.
+        result = req.json()
     if "og:image" in result:
         full_mxc = result["og:image"][6:]
         mxc = full_mxc.split("/")[1]

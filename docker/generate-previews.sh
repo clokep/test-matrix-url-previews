@@ -6,20 +6,21 @@ VERSION=${1:-latest}
 echo "Testing Synapse $VERSION"
 
 # Clean-up.
-rm -r $VERSION
-mkdir $VERSION
-mkdir $VERSION/data
+if [ -d "$VERSION" ]; then
+  rm -r $VERSION
+fi
+mkdir -p $VERSION/data
 
 echo "Generating the config"
 # Note that the SYNAPSE_CONFIG_DIR and SYNAPSE_CONFIG_PATH environment variables
 # aren't needed in newer Synapses, but v1.0.0 is strict.
 docker run -it --rm \
-    --mount type=bind,src=$(pwd)/$VERSION/data,dst=/data \
+    --mount type=bind,src=$(pwd)/data,dst=/data \
     -e SYNAPSE_SERVER_NAME=localhost:8888 \
     -e SYNAPSE_REPORT_STATS=no \
     -e SYNAPSE_CONFIG_DIR=/data \
     -e SYNAPSE_CONFIG_PATH=/data/homeserver.yaml \
-    matrixdotorg/synapse:$VERSION generate
+    matrixdotorg/synapse:v1.80.0 generate
 
 # Dump some info.
 docker inspect -f '{{ .Created }}' matrixdotorg/synapse:$VERSION > $VERSION/created
